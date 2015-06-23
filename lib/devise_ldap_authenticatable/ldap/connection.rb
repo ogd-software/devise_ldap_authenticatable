@@ -181,7 +181,7 @@ module Devise
                             :filter => Net::LDAP::Filter.ex("memberof:1.2.840.113556.1.4.1941", group_name),
                             :scope => Net::LDAP::SearchScope_BaseObject)
           # Will return  the user entry if belongs to group otherwise nothing
-          if search_result.length == 1 && search_result[0].dn.eql?(dn)
+          if search_result && search_result.length == 1 && search_result[0].dn.eql?(dn)
             in_group = true
           end
         end
