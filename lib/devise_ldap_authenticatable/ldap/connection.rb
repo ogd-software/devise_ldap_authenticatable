@@ -26,7 +26,7 @@ module Devise
 
         @ldap.auth ldap_config["admin_user"], ldap_config["admin_password"] if params[:admin]
 
-        @login = Net::LDAP::Filter.escape(params[:login])
+        @login = Net::LDAP::Filter.escape(params[:login]) unless params[:login].nil?
         @password = params[:password]
         @new_password = params[:new_password]
       end
